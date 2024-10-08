@@ -1,4 +1,8 @@
-console.log("Hello World");
+//declare global variables for computer and human
+let computerChoice = 0;
+let humanChoice = 0;
+
+
 let computerRock = 0;
 let computerPaper = 0;
 let computerScissors = 0;
@@ -13,7 +17,7 @@ function getComputerChoice() {
 //change that variable to 1
 //return the variable that has a value of 1
 
-let computerChoice = getComputerChoice();  // Store the result of the function
+computerChoice = getComputerChoice();  // Store the result of the function
 
 if (computerChoice === 1) {
     computerRock = 1;
@@ -30,3 +34,29 @@ else if (computerChoice === 3) {
 else {
     console.log("Error, none of the outcomes were correct");
 }
+
+function getHumanChoice() {
+    let humanChoiceWord = prompt("Please enter your choice of rock, paper or scissors. Only correct spelling will be used");
+    if (humanChoiceWord.toLowerCase() === "rock") {
+        humanChoice = 1;
+        console.log("You chose rock");
+        return "rock";
+    } else if (humanChoiceWord.toLowerCase() === "paper") {
+        humanChoice = 2;
+        console.log("You chose paper");
+        return "paper";
+    } else if (humanChoiceWord.toLowerCase() === "scissors") {
+        humanChoice = 3;
+        console.log("You chose scissors");
+        return "scissors";
+    } else {
+        console.log("Error, none of the outcomes were correct");
+        return "error";
+    }
+    //write a prompt to get the human choice
+    //check which choice the user made
+    //assign it to one of the three variables
+}
+
+console.log(getHumanChoice());
+
