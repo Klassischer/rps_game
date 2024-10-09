@@ -55,43 +55,45 @@ function getHumanChoice() {
 }
 
 
-//write the logic to play a single round
-//use choice paramters as arguments for the functions
-//make human input case insensitive
-//display a message after the round declaring who won
-//increment the score for the winner
 
-function playRound(humanChoice, computerChoice) {
-    console.log("The computer chose " + computerChoice);
-    console.log("You chose " + humanChoice);
-   // check if the human choice is the same as the computer choice
-    if (humanChoice === computerChoice) {
-        console.log("It's a tie, please play again");
-    }
-    //check if the human choice is rock and the computer choice is scissors or
-    else if (humanChoice === 1 && computerChoice === 3 || humanChoice === 2 && computerChoice === 1 || humanChoice === 3 && computerChoice === 2) {
-        humanScore++;
-        console.log("You won");
-        console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
-    } 
-    //check if the human choice is paper and the computer choice is rock or
-    //check if the human choice is scissors and the computer choice is paper
-    //increment the human score
-    //display a message declaring who won and the current scores
-    else if (humanChoice === 1 && computerChoice === 2 || humanChoice === 2 && computerChoice === 3 || humanChoice === 3 && computerChoice === 1) {
-        computerScore++;
-        console.log("The computer won");
-        console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
-    }
 
-    //check if the human choice is rock and the computer choice is paper
-    //check if the human choice is paper and the computer choice is scissors
-    //check if the human choice is scissors and the computer choice is rock
-    //increment the computer score
-    //display a message declaring who won and the current scores
+
+
+
+
+//write a function to play 5 rounds
+//ensure that playRound function is declared inside of playGame
+//play five rounds by calling playGame 5 times
+
+function playGame() {
+
+    for (let i = 0; i < 5; i++) {
+
+        function playRound(humanChoice, computerChoice) {
+            console.log("The computer chose " + computerChoice);
+            console.log("You chose " + humanChoice);
+           // check if the human choice is the same as the computer choice
+            if (humanChoice === computerChoice) {
+                console.log("It's a tie, please play again");
+            }
+            else if (humanChoice === 1 && computerChoice === 3 || humanChoice === 2 && computerChoice === 1 || humanChoice === 3 && computerChoice === 2) {
+                humanScore++;
+                console.log("You won");
+                console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
+            } 
+            else if (humanChoice === 1 && computerChoice === 2 || humanChoice === 2 && computerChoice === 3 || humanChoice === 3 && computerChoice === 1) {
+                computerScore++;
+                console.log("The computer won");
+                console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
+            }
+        }
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+    
+    }
+    console.log("Game over, thank you for playing.");
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
