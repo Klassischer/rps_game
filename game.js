@@ -25,12 +25,12 @@ function getComputerChoice() {
     else {
         console.log("Error, none of the outcomes were correct");
     }
+    return computerChoice;
 }
 //check where the random number falls in the range of the three variables
 //change that variable to 1
 //return the variable that has a value of 1
 
-console.log(getComputerChoice());
 
 
 function getHumanChoice() {
@@ -38,25 +38,22 @@ function getHumanChoice() {
     if (humanChoiceWord.toLowerCase() === "rock") {
         humanChoice = 1;
         console.log("You chose rock");
-        return "rock";
     } else if (humanChoiceWord.toLowerCase() === "paper") {
         humanChoice = 2;
         console.log("You chose paper");
-        return "paper";
     } else if (humanChoiceWord.toLowerCase() === "scissors") {
         humanChoice = 3;
         console.log("You chose scissors");
-        return "scissors";
     } else {
         console.log("Error, the choice was not valid");
         return "error";
     }
+    return humanChoice;
     //write a prompt to get the human choice
     //check which choice the user made
     //assign it to one of the three variables
 }
 
-console.log(getHumanChoice());
 
 //write the logic to play a single round
 //use choice paramters as arguments for the functions
@@ -72,11 +69,20 @@ function playRound(humanChoice, computerChoice) {
         console.log("It's a tie, please play again");
     }
     //check if the human choice is rock and the computer choice is scissors or
+    else if (humanChoice === 1 && computerChoice === 3 || humanChoice === 2 && computerChoice === 1 || humanChoice === 3 && computerChoice === 2) {
+        humanScore++;
+        console.log("You won");
+        console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
+    } 
     //check if the human choice is paper and the computer choice is rock or
     //check if the human choice is scissors and the computer choice is paper
     //increment the human score
     //display a message declaring who won and the current scores
-
+    else if (humanChoice === 1 && computerChoice === 2 || humanChoice === 2 && computerChoice === 3 || humanChoice === 3 && computerChoice === 1) {
+        computerScore++;
+        console.log("The computer won");
+        console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
+    }
 
     //check if the human choice is rock and the computer choice is paper
     //check if the human choice is paper and the computer choice is scissors
