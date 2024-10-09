@@ -68,31 +68,45 @@ function getHumanChoice() {
 function playGame() {
 
     for (let i = 0; i < 5; i++) {
+        let isTie = true;  // Initialize a tie condition
 
-        function playRound(humanChoice, computerChoice) {
-            console.log("The computer chose " + computerChoice);
-            console.log("You chose " + humanChoice);
-           // check if the human choice is the same as the computer choice
-            if (humanChoice === computerChoice) {
-                console.log("It's a tie, please play again");
+        // Repeat the round if there's a tie
+        while (isTie) {
+
+            function playRound(humanChoice, computerChoice) {
+                console.log("The computer chose " + computerChoice);
+                console.log("You chose " + humanChoice);
+            // check if the human choice is the same as the computer choice
+                if (humanChoice === computerChoice) {
+                    console.log("It's a tie, please repeat the round");
+                    isTie = true;  // Tie, repeat the round
+                }
+                else {
+                    isTie = false;  // No tie, proceed with scoring
+
+                    if (humanChoice === 1 && computerChoice === 3 || 
+                    humanChoice === 2 && computerChoice === 1 || 
+                    humanChoice === 3 && computerChoice === 2) {
+                    humanScore++;
+                    console.log("You won");
+                    console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
+                } 
+                else if (humanChoice === 1 && computerChoice === 2 || 
+                    humanChoice === 2 && computerChoice === 3 || 
+                    humanChoice === 3 && computerChoice === 1) {
+                    computerScore++;
+                    console.log("The computer won");
+                    console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
+                }
             }
-            else if (humanChoice === 1 && computerChoice === 3 || humanChoice === 2 && computerChoice === 1 || humanChoice === 3 && computerChoice === 2) {
-                humanScore++;
-                console.log("You won");
-                console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
-            } 
-            else if (humanChoice === 1 && computerChoice === 2 || humanChoice === 2 && computerChoice === 3 || humanChoice === 3 && computerChoice === 1) {
-                computerScore++;
-                console.log("The computer won");
-                console.log("The score is you:" + humanScore + " vs computer:" + computerScore);
+            }
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
+
+            playRound(humanSelection, computerSelection);
+        
             }
         }
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-    
-    }
     console.log("Game over, thank you for playing.");
 }
 
